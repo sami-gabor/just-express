@@ -1,5 +1,6 @@
 const path = require('path');
 const express = require('express');
+const helmet = require('helmet');
 
 const app = express();
 
@@ -10,9 +11,10 @@ const myMiddleware = (req, res, next) => {
     next();
 }
 
+app.use(helmet());
 app.use(express.static('public'));
-app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.json()); // creaes req.body
+app.use(express.urlencoded({extended: false})); // adds data to req.body
 app.use('/mid', myMiddleware);
 
 
@@ -26,7 +28,8 @@ app.post('/', function(req, res) {
 });
 
 app.post('/ajax', function(req, res) {
-    console.log('Response from POST/ajax: ', req.body.name);
+    console.log('Response from POST/ajax - req.body: ', req.body);
+    // console.log('Response from POST/ajax - headers: ', req.headers);
     res.send('POST/ajax');
 });
 
