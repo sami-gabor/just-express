@@ -5,7 +5,15 @@ const express = require('express');
 const app = express();
 
 
+const myMiddleware = (req, res, next) => {
+    console.log("Middleware at work!");
+    res.locals.myMiddleStuff = 'Middleware run!'
+    next();
+}
+
 app.use(express.static('public'));
+
+app.use('/mid', myMiddleware);
 
 app.get('/', function(req, res) {
     res.send('Express home GET');
@@ -28,6 +36,7 @@ app.all('/home', function(req, res) {
 });
 
 app.all('*', function(req, res) {
+    console.log(res.locals.myMiddleStuff);
     res.send('No page found...');
 });
 
