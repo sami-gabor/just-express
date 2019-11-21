@@ -8,8 +8,7 @@ const app = express();
 
 
 const myMiddleware = (req, res, next) => {
-    console.log("Middleware at work!");
-    res.locals.myMiddleStuff = 'Middleware run!'
+    res.locals.myMiddleStuff = 'Middleware updated res.locals'
     next();
 }
 
@@ -17,7 +16,7 @@ app.use(helmet());
 app.use(express.static('public'));
 app.use(express.json()); // creaes req.body
 app.use(express.urlencoded({extended: false})); // adds data to req.body
-app.use('/mid', myMiddleware);
+app.use('/ejs', myMiddleware);
 
 
 app.set('view engine', 'ejs');
@@ -29,7 +28,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/ejs', function(req, res) {
-    res.render('index');
+    res.render('index', {msg: 'Message from render'});
 });
 
 
