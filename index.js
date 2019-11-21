@@ -30,7 +30,7 @@ app.post('/', function(req, res) {
 app.post('/ajax', function(req, res) {
     console.log('Response from POST/ajax - req.body: ', req.body);
     // console.log('Response from POST/ajax - headers: ', req.headers);
-    res.send('POST/ajax');
+    res.json('POST/ajax');
 });
 
 
