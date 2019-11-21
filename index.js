@@ -1,6 +1,8 @@
 const path = require('path');
 const express = require('express');
 const helmet = require('helmet');
+const ejs = require('ejs');
+const pug = require('pug');
 
 const app = express();
 
@@ -18,9 +20,27 @@ app.use(express.urlencoded({extended: false})); // adds data to req.body
 app.use('/mid', myMiddleware);
 
 
+app.set('view engine', 'ejs');
+
+
 app.get('/', function(req, res) {
     res.send('Express home GET');
 });
+
+app.get('/ejs', function(req, res) {
+    res.render('index');
+});
+
+
+// app.set('view engine', 'pug');
+// app.get('/pug', function(req, res) {
+//     res.render('index');
+// });
+
+// app.set('view engine', 'hbs');
+// app.get('/hbs', function(req, res) {
+//     res.render('index');
+// });
 
 
 app.post('/', function(req, res) {
@@ -29,6 +49,8 @@ app.post('/', function(req, res) {
 
 app.post('/ajax', function(req, res) {
     console.log('Response from POST/ajax - req.body: ', req.body);
+    // console.log('Response from POST/ajax - id: ', req.id);
+    // console.log('Response from POST/ajax - path: ', req.path);
     // console.log('Response from POST/ajax - headers: ', req.headers);
     res.json('POST/ajax');
 });
