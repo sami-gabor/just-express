@@ -4,11 +4,12 @@
   "description": "",
   "main": "login.js",
   "scripts": {
-    "start": "nodemon login-server.js"
+    "start": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cookie-parser": "^1.4.4",
     "ejs": "^2.7.4"
   }
 }
