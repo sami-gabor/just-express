@@ -16,6 +16,16 @@ app.use(cookieParser());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+app.use('/login', function(req, res, next) {
+    if (req.query.msg === 'fail') {
+        res.locals.msg = 'Wrong username and/or password!';
+    } else {
+        res.locals.msg = '';
+    }
+
+    next();
+})
+
 
 app.get('/', function(req, res) {
     res.send('Express started!');
@@ -43,7 +53,7 @@ app.post('/process_login', function(req, res) {
         res.cookie('email', email);
         res.redirect('/welcome');
     } else {
-        res.redirect('/login');
+        res.redirect('/login?msg=fail&test=ok');
     }
 });
 
