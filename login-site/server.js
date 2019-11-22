@@ -16,6 +16,11 @@ app.use(cookieParser());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+app.param('number', function(req, res, next, id) {
+    console.log('Params called: ', id);
+    next();
+})
+
 app.use('/login', function(req, res, next) {
     if (req.query.msg === 'fail') {
         res.locals.msg = 'Wrong username and/or password!';
@@ -24,7 +29,7 @@ app.use('/login', function(req, res, next) {
     }
 
     next();
-})
+});
 
 
 app.get('/', function(req, res) {
@@ -37,6 +42,10 @@ app.get('/login', function(req, res) {
 
 app.get('/welcome', function(req, res) {
     res.render('welcome-page', { email: req.cookies.email });
+});
+
+app.get('/story/:number', function(req, res) {
+    res.send(`Story ${req.params.number}`);
 });
 
 app.get('/process_logout', function(req, res) {
