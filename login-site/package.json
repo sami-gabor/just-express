@@ -1,0 +1,14 @@
+{
+  "name": "login-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "login.js",
+  "scripts": {
+    "start": "nodemon login-server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.7.4"
+  }
+}
