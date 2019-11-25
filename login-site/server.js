@@ -48,6 +48,10 @@ app.get('/story/:number', function(req, res) {
     res.send(`Story ${req.params.number}`);
 });
 
+app.get('/statement', function(req, res) {
+    res.download(path.join(__dirname, 'statements/statement.png'), 'optional-statement-name');
+});
+
 app.get('/process_logout', function(req, res) {
     res.clearCookie('email');
     res.redirect('/login');
