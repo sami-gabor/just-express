@@ -1,0 +1,12 @@
+{
+  "name": "router-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "routerApp.js",
+  "scripts": {
+    "start": "nodemon routerApp.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
