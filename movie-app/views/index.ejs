@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>Movie app</title>
 
     <% include head %>
   </head>
   <body>
     <% include navbar %>
 
+    <h1 class="text-center p-3">Now Playing</h1>
+
     <div class="container">
-      <% include single-movie %>
-      <% include single-movie %>
+      <% parsedData.forEach((movie) => { %>
+        <%- include('single-movie', { movie }) %>
+      <% }) %>
     </div>
 
   </body>

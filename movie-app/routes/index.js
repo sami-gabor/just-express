@@ -11,10 +11,9 @@ const imageBaseUrl = 'http://image.tmdb.org/t/p/w300';
 router.get('/', function(req, res, next) {
   request.get(nowPlayingUrl, (error, response, movieData) => {
     const parsedData = JSON.parse(movieData);
-    console.log(parsedData);
-    
+    // res.json(parsedData);
+    res.render('index', { parsedData: parsedData.results });
   });
-  res.render('index', { title: 'Movie App' });
 });
 
 module.exports = router;
