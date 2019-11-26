@@ -1,5 +1,5 @@
-<div class="container single-movie">
-    <h2 class="single-movie-title"><%= movie.original_title %></h2>
-    <img src="<%= imageBaseUrl + movie.poster_path %>" alt="" class="single-movie-img">
-    <p class="single-movie-description"><%= movie.overview %></p>
+<div class="container text-center rounded shadow-sm m-4 single-movie">
+    <h2><%= movie.original_title %></h2>
+    <img src="<%= imageBaseUrl + movie.poster_path %>" alt="" class="mx-auto d-block">
+    <p><%= movie.overview %></p>
 </div>
