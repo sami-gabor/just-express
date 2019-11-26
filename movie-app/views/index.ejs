@@ -10,9 +10,13 @@
 
     <h1 class="text-center p-3">Now Playing</h1>
 
-    <div class="container">
+    <div class="d-flex flex-wrap justify-content-center">
       <% movies.forEach((movie) => { %>
-        <%- include('single-movie', { movie }) %>
+        <div class="m-3">
+          <a href="/movie/<%= movie.id %>">
+            <img src="<%= imageBaseUrl + movie.poster_path %>" class="rounded" />
+          </a>
+        </div>
       <% }) %>
     </div>
 

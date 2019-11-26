@@ -1,5 +1,21 @@
-<div class="container text-center rounded shadow-sm m-4 single-movie">
-    <h2><%= movie.original_title %></h2>
-    <img src="<%= imageBaseUrl + movie.poster_path %>" alt="" class="mx-auto d-block">
-    <p><%= movie.overview %></p>
-</div>
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Movie details</title>
+
+    <% include head %>
+  </head>
+  <body>
+    <% include navbar %>
+
+    <div class="container text-center">
+        <h1 class="mt-5"><%= movie.original_title %></h1>
+        <img src="<%= imageBaseUrl + movie.poster_path %>" alt="" class="m-3">
+        <p class=""><%= movie.overview %></p>
+    </div>
+
+  </body>
+</html>

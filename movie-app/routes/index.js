@@ -20,4 +20,15 @@ router.get('/', function(req, res, next) {
   });
 });
 
+/* GET movie details page. */
+router.get('/movie/:id', function(req, res, next) {
+  const movieId = req.params.id;
+  const thisMovieUrl = `${apiBaseUrl}/movie/${movieId}?api_key=${apiKey}&language=en-US`
+
+  request.get(thisMovieUrl, (error, response, movieData) => {
+    const parsedData = JSON.parse(movieData);
+    res.render('single-movie', { movie: parsedData });
+  });
+});
+
 module.exports = router;
