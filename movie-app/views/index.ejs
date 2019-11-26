@@ -11,7 +11,7 @@
     <h1 class="text-center p-3">Now Playing</h1>
 
     <div class="container">
-      <% parsedData.forEach((movie) => { %>
+      <% movies.forEach((movie) => { %>
         <%- include('single-movie', { movie }) %>
       <% }) %>
     </div>
