@@ -29,7 +29,19 @@ router.get('/movie/:id', function(req, res, next) {
 
   request.get(thisMovieUrl, (error, response, movieData) => {
     const parsedData = JSON.parse(movieData);
-    res.render('single-movie', { movie: parsedData });
+    res.send(parsedData)
+    // res.render('single-movie', { movie: parsedData });
+  });
+});
+
+/* POST filtered movies. */
+router.post('/search', function(req, res, next) {
+  const searchInput = encodeURI(req.body.searchField);
+  const filteredMoviesUrl = `${apiBaseUrl}/search/movie?api_key=${apiKey}&language=en-US&page=1&include_adult=false&query=${searchInput}`;
+
+  request.get(filteredMoviesUrl, (error, response, movieData) => {
+    const parsedData = JSON.parse(movieData);
+    res.render('index', { movies: parsedData.results });
   });
 });
 
