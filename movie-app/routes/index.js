@@ -8,19 +8,22 @@ const nowPlayingUrl = `${apiBaseUrl}/movie/now_playing?api_key=${apiKey}`;
 const imageBaseUrl = 'http://image.tmdb.org/t/p/w200';
 const apiBaseImdb = 'https://www.imdb.com/title/';
 
+
 router.use('/', (req, res, next) => {
   res.locals.imageBaseUrl = imageBaseUrl;
   res.locals.apiBaseImdb = apiBaseImdb;
   next();
 });
 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   request.get(nowPlayingUrl, (error, response, movieData) => {
     const parsedData = JSON.parse(movieData);
-    res.render('index', { movies: parsedData.results });
+    res.render('index', { movies: parsedData.results, header: 'Now Playing' });
   });
 });
+
 
 /* GET movie details page. */
 router.get('/movie/:id', function(req, res, next) {
@@ -29,10 +32,10 @@ router.get('/movie/:id', function(req, res, next) {
 
   request.get(thisMovieUrl, (error, response, movieData) => {
     const parsedData = JSON.parse(movieData);
-    res.send(parsedData)
-    // res.render('single-movie', { movie: parsedData });
+    res.render('single-movie', { movie: parsedData });
   });
 });
+
 
 /* POST filtered movies. */
 router.post('/search', function(req, res, next) {
@@ -41,7 +44,7 @@ router.post('/search', function(req, res, next) {
 
   request.get(filteredMoviesUrl, (error, response, movieData) => {
     const parsedData = JSON.parse(movieData);
-    res.render('index', { movies: parsedData.results });
+    res.render('index', { movies: parsedData.results, header: 'Search results:' });
   });
 });
 
