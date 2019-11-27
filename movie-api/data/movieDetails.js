@@ -359,7 +359,7 @@ const movieDetails = [
         imdb_id: "tt9430698",
         original_language: "ja",
         original_title: "ワンピーススタンピード",
-        overview: "One Piece: Stampede is a stand-alone film that celebrates the anime's 20th Anniversary and takes place outside the canon of the "One Piece" TV series. Monkey D. Luffy and his Straw Hat pirate crew are invited to a massive Pirate Festival that brings many of the most iconic characters from throughout the franchise to participate in competition with the Straw Hats to find Roger's treasure. It also pits the Straw Hats against a new enemy named Bullet, a former member of Roger's crew.",
+        overview: "One Piece: Stampede is a stand-alone film that celebrates the anime's 20th Anniversary and takes place outside the canon of the \"One Piece\" TV series. Monkey D. Luffy and his Straw Hat pirate crew are invited to a massive Pirate Festival that brings many of the most iconic characters from throughout the franchise to participate in competition with the Straw Hats to find Roger's treasure. It also pits the Straw Hats against a new enemy named Bullet, a former member of Roger's crew.",
         popularity: 90.864,
         poster_path: "/4E2lyUGLEr3yH4q6kJxPkQUhX7n.jpg",
         production_companies: [
@@ -1388,7 +1388,7 @@ const movieDetails = [
         imdb_id: "tt1302006",
         original_language: "en",
         original_title: "The Irishman",
-        overview: "World War II veteran and mob hitman Frank "The Irishman" Sheeran recalls his possible involvement with the slaying of union leader Jimmy Hoffa.",
+        overview: "World War II veteran and mob hitman Frank \"The Irishman\" Sheeran recalls his possible involvement with the slaying of union leader Jimmy Hoffa.",
         popularity: 58.042,
         poster_path: "/4Fc3UkAyXIKWW8jrCQpvOkTE1gy.jpg",
         production_companies: [
