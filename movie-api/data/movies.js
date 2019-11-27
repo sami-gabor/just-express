@@ -392,7 +392,7 @@ const movies = [
     ],
     title: "The Irishman",
     vote_average: 8.4,
-    overview: "World War II veteran and mob hitman Frank "The Irishman" Sheeran recalls his possible involvement with the slaying of union leader Jimmy Hoffa.",
+    overview: "World War II veteran and mob hitman Frank \"The Irishman\" Sheeran recalls his possible involvement with the slaying of union leader Jimmy Hoffa.",
     release_date: "2019-11-01"
     }
 ];
