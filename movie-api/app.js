@@ -8,6 +8,7 @@ const helmet = require('helmet');
 var indexRouter = require('./routes/index');
 const movieRouter = require('./routes/movie');
 const searchRouter = require('./routes/search');
+const api_keys = require('./data/apiKeys.js');
 
 var app = express();
 app.use(helmet());
@@ -21,6 +22,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use((req, res, next) => {
+  if (api_keys.includes(req.query.api_key)) {
+    next();
+  } else {
+    res.send({ msg: 'Invalid API key!' });
+  }
+})
 
 app.use('/', indexRouter);
 app.use('/movie', movieRouter);
