@@ -27,6 +27,7 @@ app.use((req, res, next) => {
   if (api_keys.includes(req.query.api_key)) {
     next();
   } else {
+    res.status(401);
     res.send({ msg: 'Invalid API key!' });
   }
 })
