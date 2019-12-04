@@ -5,7 +5,7 @@ const movieDetails = require('../data/movieDetails.js');
 
 
 /* GET movie page. */
-// /movie/movieId
+/* /movie/movieId */
 router.get('/:movieId', function(req, res, next) {
   const movieId = req.params.movieId;
   const singleMovieDetails = movieDetails.find((movie) => {
@@ -18,5 +18,17 @@ router.get('/:movieId', function(req, res, next) {
     res.json({ msg: 'Invalid movie id' });
   }
 });
+
+/* POST movie page. */
+/* /movie/movieId/rating */
+router.post('/:movieId/rating', function(req, res) {
+  const rating = req.body.value;
+  
+  if (rating > 0.5 && rating <= 10) {
+    res.json({ msg: `Thank you for submitting your rating of ${rating}`});
+  } else {
+    res.json({ msg: 'Rating must be in the range 0.5 - 10!'});
+  }
+})
 
 module.exports = router;
