@@ -34,10 +34,19 @@ router.post('/:movieId/rating', requireJSON, function(req, res) {
   const rating = req.body.value;
   
   if (rating > 0.5 && rating <= 10) {
+    // do some DB work...
     res.json({ msg: `Thank you for submitting your rating of ${rating}`});
   } else {
     res.json({ msg: 'Rating must be in the range 0.5 - 10!'});
   }
 })
+
+
+/* DELETE movie page. */
+/* /movie/movieId/rating */
+router.delete('/:movieId/rating', requireJSON, function(req, res) {
+  // do some DB work...
+  res.json({ msg: 'Your rating was deleted!' });
+});
 
 module.exports = router;
