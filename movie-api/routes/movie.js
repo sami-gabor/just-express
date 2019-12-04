@@ -4,6 +4,15 @@ var router = express.Router();
 const movieDetails = require('../data/movieDetails.js');
 
 
+const requireJSON = (req, res, next) => {
+  if (req.is('application/json')) {
+    next();
+  } else {
+    res.json({ msg: 'Content-Type must be applicatjion/json! '});
+  }
+}
+
+
 /* GET movie page. */
 /* /movie/movieId */
 router.get('/:movieId', function(req, res, next) {
@@ -21,7 +30,7 @@ router.get('/:movieId', function(req, res, next) {
 
 /* POST movie page. */
 /* /movie/movieId/rating */
-router.post('/:movieId/rating', function(req, res) {
+router.post('/:movieId/rating', requireJSON, function(req, res) {
   const rating = req.body.value;
   
   if (rating > 0.5 && rating <= 10) {
