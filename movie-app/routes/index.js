@@ -3,6 +3,7 @@ var router = express.Router();
 const request = require('request');
 
 const movieRouter = require('./movie');
+const searchRouter = require('./search');
 
 // const apiKey = '1fb720b97cc13e580c2c35e1138f90f8';
 const apiKey = 'sam';
@@ -34,16 +35,7 @@ router.get('/', function(req, res, next) {
 /* GET movie details page. */
 router.use(movieRouter);
 
-
 /* POST filtered movies. */
-router.post('/search', function(req, res, next) {
-  const searchInput = encodeURI(req.body.searchField);
-  const filteredMoviesUrl = `${apiBaseUrl}/search/movie?api_key=${apiKey}&language=en-US&page=1&include_adult=false&query=${searchInput}`;
-
-  request.get(filteredMoviesUrl, (error, response, movieData) => {
-    const parsedData = JSON.parse(movieData);
-    res.render('index', { movies: parsedData.results, header: 'Search results:' });
-  });
-});
+router.use(searchRouter);
 
 module.exports = router;
