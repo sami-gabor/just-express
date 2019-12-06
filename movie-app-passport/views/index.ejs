@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Movie app</title>
+
+    <% include head %>
+  </head>
+  <body>
+    <% include navbar %>
+
+    <% if(!movies.msg) {%>
+    <h1 class="text-center p-3"><%= header %></h1>
+
+    <div class="d-flex flex-wrap justify-content-center">
+        <% movies.forEach((movie) => { %>
+          <div class="m-3">
+            <a href="/movie/<%= movie.id %>">
+              <img src="<%= imageBaseUrl + movie.poster_path %>" class="rounded" />
+            </a>
+          </div>
+        <% }) %>
+      </div>
+    <% } else {%>
+      <h2 class="text-center pt-5"> <%= movies.msg %> </h2>
+    <% } %>
+
+  </body>
+</html>

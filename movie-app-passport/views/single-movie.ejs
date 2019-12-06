@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Movie details</title>
+
+    <% include head %>
+  </head>
+  <body>
+    <% include navbar %>
+
+    <div class="container text-center">
+        <h1 class="mt-5"><%= movie.original_title %></h1>
+        <a href="<%= apiBaseImdb + movie.imdb_id %>" target="_blank">
+            <img src="<%= imageBaseUrl + movie.poster_path %>" alt="" class="m-3" title="Go to IMDB">
+        </a>
+        <p><%= movie.overview %></p>
+        <p>Budget: <%= movie.budget %></p>
+        <p>Release date: <%= movie.release_date %></p>
+        <p>Rating: <%= movie.vote_average %></p>
+        <p>Votes: <%= movie.vote_count %></p>
+    </div>
+
+  </body>
+</html>
