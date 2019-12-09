@@ -9,12 +9,12 @@ const passport = require('passport');
 // });
 
 router.get('/auth-github', 
-  passport.authenticate('github', { failureRedirect: '/auth-failed', session: false }),
+  passport.authenticate('github', { failureRedirect: '/login', session: false }),
   function(req, res) {
     // Successful authentication, redirect home.
     console.log('success!!!', req.user);
     
-    res.redirect('/');
+    res.redirect('/home');
 });
 
 router.get('/logout', function(req, res){

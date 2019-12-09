@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
+const rootRouter = require('./root');
 const homeRouter = require('./home');
 const movieRouter = require('./movie');
 const searchRouter = require('./search');
@@ -14,17 +15,21 @@ const apiBaseImdb = 'https://www.imdb.com/title/';
 router.use('/', (req, res, next) => {
   res.locals.imageBaseUrl = imageBaseUrl;
   res.locals.apiBaseImdb = apiBaseImdb;
+  
   next();
 });
 
 
-/* GET home page. */
+/* GET / */
+router.use(rootRouter);
+
+/* GET /home */
 router.use(homeRouter);
 
-/* GET movie details page. */
+/* GET /movie */
 router.use(movieRouter);
 
-/* POST filtered movies. */
+/* POST /search */
 router.use(searchRouter);
 
 /* POST auth with github. */
